@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerfies: Deformable Neural Radiance Fields</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">InterAgent: Physics-based Multi-agent Command Execution via Diffusion on
+            Interaction Graphs</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a >Bin Li</a><sup>* 1</sup>,</span>
+            <span class="author-block">
+              <a >Ruichi Zhang</a><sup>* 2</sup>,</span>
+            <span class="author-block">
+              <a >Han Liang</a><sup>&dagger; 3</sup>,
+            </span>
+            <span class="author-block">
+              <a >Jingyan Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Juze Zhang</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a >Xin Chen</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a >Lan Xu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Jingyi Yu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Jingya Wang</a><sup>&dagger; 1,5</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>ShanghaiTech University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>University of Pennsylvania</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>ByteDance</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>4</sup>Stanford University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>5</sup>InstAdapt</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>&dagger;</sup>Corresponding authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (coming soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body has-text-centered">
+    <div class="column is-6 is-offset-3">
+      <figure class="image is-inline-block">
+        <img src="./all/images/teaser.png"
+             class="interpolation-image"
+             alt="Interpolate start reference image.">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="hero-body has-text-centered">
+    <div class="column is-6 is-offset-3">
+      <figure class="image is-inline-block">
+        <img src="./all/images/teaser.png"
+             class="interpolation-image"
+             alt="Interpolate start reference image.">
+      </figure>
+      <p>Overview</p>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Humanoid agents are expected to emulate the complex coordination inherent in human social behaviors. 
+            However, existing methods are largely confined to single-agent scenarios, overlooking the physically plausible interplay essential for multi-agent interactions. 
+            To bridge this gap, we propose InterAgent, the first end-to-end framework for text-driven physics-based multi-agent humanoid control.
+            At its core, we introduce an autoregressive diffusion transformer equipped with multi-stream blocks, which decouples proprioception, exteroception,
+            and action to mitigate cross-modal interference while enabling synergistic coordination.
+            We further propose a novel interaction graph exteroception representation that explicitly captures fine-grained joint-to-joint 
+            spatial dependencies to facilitate network learning. Additionally, within it we devise a sparse edge-based attention mechanism
+            that dynamically prunes redundant connections and emphasizes critical inter-agent spatial relations,
+            thereby enhancing the robustness of interaction modeling.
+            Extensive experiments demonstrate that InterAgent consistently outperforms multiple strong baselines, achieving state-of-the-art performance. 
+            It enables producing coherent, physically plausible, and semantically faithful multi-agent behaviors from only text prompts.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Methods</h2>
+
+          <div class="columns is-centered">
+            <div class="column is-7 has-text-centered">
+              <figure class="image is-inline-block">
+                <img src="./all/images/overview.png">
+              </figure>
+              <b>InterAgent overview</b>
+            </div>
+          
+            <div class="column is-7 has-text-centered">
+              <figure class="image is-inline-block">
+                <img src="./all/images/block.png">
+              </figure>
+              <b>Multi-stream DiT block design</b>
+            </div>
+          </div>
+          
+          
+          <div class="content has-text-justified">
+            <p>
+              We focus on physics-based text-driven control for two interacting humanoid agents. 
+              In single-agent settings, <b>actions</b> depend mainly on an agent’s own state (<b>proprioception</b>). 
+              In contrast, multi-agent scenarios introduce additional challenges: 
+              each agent’s actions are influenced not only by its intrinsic dynamics but also by the other’s states and behaviors (<b>exteroception</b>).
+              To this end, we propose a novel framework InterAgent.
+              It incorporates an Interaction Diffusion Transformer (Inter-DiT), composed of two cooperative,
+              weight-sharing networks under an autoregressive diffusion paradigm, to effectively model interactive dynamics.
+              Given the inherent heterogeneity among proprioception, exteroception, and action, we treat them as distinct modalities.
+               To handle these modalities in a coordinated manner, Inter-DiT adopts a multi-stream architecture that enables decoupled 
+               yet cooperative modeling and enhances overall performance. Moreover, we propose a novel and effective exteroception representation, 
+               interaction graph (IG), and devise a tailored edge-based sparse attention mechanism on the exteroception stream to selectively 
+               suppress interaction-irrelevant connections and effectively highlight salient inter-agent relations, based on its sparsity nature.
+            </p>
+          </div>
+        </div>
+      </div>
+    <!-- Method. -->
+
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <h2 class="title is-3">Qualitative comparison</h2>
+  </div>
+
+  <!-- 2055 -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-2 has-text-centered">
+      <b>InterGen++</b>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/2055/intergen/0003-0439.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterGen++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <b>InterMask++</b>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/2055/intermask/0003-0195.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterMask++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <b>PDP</b>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/2055/pdp/0001-0438.mp4" type="video/mp4">
+      </video>
+      <!-- <p>PDP</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <b>CLoSD</b>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/2055/closd/0003-0394.mp4" type="video/mp4">
+      </video>
+      <!-- <p>CLoSD</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <b>Ours</b>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/2055/ours/0001-0438.mp4" type="video/mp4">
+      </video>
+      <!-- <p>Ours</p> -->
+    </div>
+  
+  </div>
+
+  <div class="has-text-centered" style="margin-bottom: 20px;">
+    <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      <span style="color: #be6db5;">Shift left</span> while maintaining a tight <span style="color: #be6db5;">hug.</span>
+    </h2>
+  </div>
+
+
+  <!-- 58 -->
+ 
+  <div class="columns is-centered">
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/58/intergen/intergen.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterGen++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/58/intermask/intermask.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterMask++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/58/pdp/pdp.mp4" type="video/mp4">
+      </video>
+      <!-- <p>PDP</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/58/closd/closd.mp4" type="video/mp4">
+      </video>
+      <!-- <p>CLoSD</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/58/ours/ours.mp4" type="video/mp4">
+      </video>
+      <!-- <p>Ours</p> -->
+    </div>
+  
+  </div>
+
+  <div class="has-text-centered" style="margin-bottom: 20px;">
+    <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      One poses as the other<span style="color: #be6db5;"> lifts a phone in the right hand for a photo</span> together.
+    </h2>
+  </div>
+
+  
+
+  <!-- 1888 -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/1888/intergen/0001-0251.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterGen++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/1888/intermask/0003-0068.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterMask++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/1888/pdp/0001-0180.mp4" type="video/mp4">
+      </video>
+      <!-- <p>PDP</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/1888/closd/0001-0136.mp4" type="video/mp4">
+      </video>
+      <!-- <p>CLoSD</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/1888/ours/0001-0180.mp4" type="video/mp4">
+      </video>
+      <!-- <p>Ours</p> -->
+    </div>
+  
+  </div>
+
+  <div class="has-text-centered" style="margin-bottom: 20px;">
+    <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      One<span style="color: #be6db5;"> throws a left punch</span> directed towards the <span style="color: #be6db5;">abdomen</span> of the other.
+    </h2>
+  </div>
+
+
+  <!-- 105 -->
+  <div class="columns is-centered">
+
+    <div class="column is-2 has-text-centered">
+      <!-- <b>InterGen++</b> -->
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/105/intergen/intergen_105.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterGen++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <!-- <b>InterMask++</b> -->
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/105/intermask/intermask_105.mp4" type="video/mp4">
+      </video>
+      <!-- <p>InterMask++</p> -->
+    </div>
+  
+    <div class="column is-2 has-text-centered">
+      <!-- <b>PDP</b> -->
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/105/pdp/pdp_105.mp4" type="video/mp4">
+      </video>
+      <!-- <p>PDP</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <!-- <b>CLoSD</b> -->
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/105/closd/closd_105.mp4" type="video/mp4">
+      </video>
+      <!-- <p>CLoSD</p> -->
+    </div>
+
+    <div class="column is-2 has-text-centered">
+      <!-- <b>Ours</b> -->
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/105/ours/ours_105.mp4" type="video/mp4">
+      </video>
+      <!-- <p>Ours</p> -->
+    </div>
+  
+  </div>
+
+  <div class="has-text-centered" style="margin-bottom: 20px;">
+    <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      One <span style="color: #be6db5;">extends both arms</span> and 
+      <span style="color: #be6db5;">pushes</span> 
+      the other.
+    </h2>
+  </div>
+  
+</section>
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <h2 class="title is-3">More Results</h2>
+  </div>
+
+  <!-- each column two -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-4 has-text-centered">
+
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/cheers32/cheers32.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Cheer with fist bumps, then one lifts both arms.
+    </h2>
+    </div>
+  
+    <div class="column is-4 has-text-centered">
+      
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/ferver37/ferver37.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Do a inspecting.
+    </h2>
+    </div>
+  
+  </div>
+
+  <!-- each column two -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-4 has-text-centered">
+
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/G08T/G08T.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Wave hello.
+    </h2>
+    </div>
+  
+    <div class="column is-4 has-text-centered">
+      
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/G021T/G021T.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Go shake hands.
+    </h2>
+    </div>
+  
+  </div>
+
+  <!-- each column two -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-4 has-text-centered">
+
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/hug22/hug22.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Share a tight hug.
+    </h2>
+    </div>
+  
+    <div class="column is-4 has-text-centered">
+      
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/sidehug/sidehug.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Give a side hug.
+    </h2>
+    </div>
+  
+  </div>
+
+  <!-- each column two -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-4 has-text-centered">
+
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/pose/pose.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Pose for photo.
+    </h2>
+    </div>
+  
+    <div class="column is-4 has-text-centered">
+      
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/taichi/taichi.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Half squat together.
+    </h2>
+    </div>
+  
+  </div>
+
+  <!-- each column two -->
+
+  <div class="columns is-centered">
+
+    <div class="column is-4 has-text-centered">
+
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/strike/strike.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Throw a punch.
+    </h2>
+    </div>
+  
+    <div class="column is-4 has-text-centered">
+      
+      <video autoplay muted loop playsinline width="100%">
+        <source src="./all/videos/more/infencing/infencing.mp4" type="video/mp4">
+      </video>
+      <h2 class="title is-4" 
+        style="color: black; 
+               font-family: 'Times New Roman', Times, serif; 
+               font-style: italic;">
+      Do some fencing.
+    </h2>
+    </div>
+  
+  </div>
+
+
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
